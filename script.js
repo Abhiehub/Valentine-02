@@ -1,37 +1,35 @@
-document.getElementById("envelope").addEventListener("click", openEnvelope);
+// Elements
+const envelope = document.getElementById('envelope');
+const valentineContent = document.getElementById('valentineContent');
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const popup = document.getElementById('popup');
 
-let envelopeOpened = false;
-
-function openEnvelope() {
-    if (!envelopeOpened) {
-        // Flip open the envelope
-        document.querySelector(".flap").style.transform = "rotateX(180deg)";
-        document.getElementById("message").classList.remove("hidden");
-        envelopeOpened = true;
-    }
-}
-
-// Yes button action
-document.getElementById("yesBtn").addEventListener("click", function() {
-    document.getElementById("finalMessage").classList.remove("hidden");
-    document.getElementById("message").classList.add("hidden");
+// Open Envelope
+envelope.addEventListener('click', () => {
+  // Hide the envelope and show the content
+  envelope.style.display = 'none';
+  valentineContent.style.display = 'block';
 });
 
-// No button action
-let noBtnClickCount = 0;
-document.getElementById("noBtn").addEventListener("click", function() {
-    noBtnClickCount++;
-    this.style.pointerEvents = "none"; // Disable clicking after the first click
-    
-    // Change button behavior after each click (e.g., change text, color, etc.)
-    if (noBtnClickCount === 1) {
-        this.innerText = "No... Really?";
-        this.style.backgroundColor = "#ffcc00"; // Yellow
-    } else if (noBtnClickCount === 2) {
-        this.innerText = "You're really sure?";
-        this.style.backgroundColor = "#d32f2f"; // Red
-    } else {
-        this.innerText = "Okay, I get it!";
-        this.style.backgroundColor = "#ff8a65"; // Light red
-    }
+// No Button Behavior (shifting away on every click)
+noBtn.addEventListener('click', () => {
+  // Get random positions for X and Y within the window size
+  const randomX = Math.floor(Math.random() * (window.innerWidth - 100)); // Random X position
+  const randomY = Math.floor(Math.random() * (window.innerHeight - 100)); // Random Y position
+
+  // Move the button to the random position
+  noBtn.style.position = 'absolute'; // Ensure it's positioned absolutely
+  noBtn.style.left = `${randomX}px`;
+  noBtn.style.top = `${randomY}px`;
+  noBtn.style.transition = 'left 0.5s ease, top 0.5s ease';  // Smooth transition
+});
+
+// Yes Button Behavior (show the flashy popup and blur background)
+yesBtn.addEventListener('click', () => {
+  // Show the popup with final text
+  popup.style.display = 'flex';  // Show the popup
+
+  // Apply blur effect to the background (valentineContent)
+  valentineContent.classList.add('blur');
 });
