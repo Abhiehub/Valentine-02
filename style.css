@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.envelope {
+    width: 200px;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    background-color: #f2e0d4;
+    border-radius: 10px;
+}
+
+.flap {
+    width: 100%;
+    height: 50%;
+    background-color: #ef8c9b;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10px 10px 0 0;
+    transform-origin: top;
+    transition: transform 0.3s ease;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    background-color: #f2e0d4;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+#message h1 {
+    font-size: 32px;
+    color: #f5a623;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+button#yesBtn {
+    background-color: #67a7ff;
+    color: white;
+}
+
+button#noBtn {
+    background-color: #ff8a65;
+    color: white;
+}
+
+#popup {
+    background-color: #ffefff;
+    padding: 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
