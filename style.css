@@ -1,73 +1,109 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #fef1f2; /* Light pink background */
-    padding-top: 100px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #fce4ec;
+  padding: 10px;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .envelope {
-    width: 200px;
-    height: 150px;
-    margin: 0 auto;
-    position: relative;
-    cursor: pointer;
-    background-color: #ffaadf; /* Light pink envelope */
-    border-radius: 10px;
+  font-size: 50px;
+  cursor: pointer;
+  animation: bounce 1s infinite;
 }
 
-.flap {
-    width: 100%;
-    height: 50%;
-    background-color: #ff6781; /* Soft red flap */
-    position: absolute;
-    top: 0;
-    left: 0;
-    border-radius: 10px 10px 0 0;
-    transform-origin: top;
-    transition: transform 0.3s ease;
+.valentine-content {
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 500px;
+  transition: filter 0.5s ease; /* Smooth transition for blur effect */
 }
 
-.body {
-    width: 100%;
-    height: 100%;
-    background-color: #ffaadf;
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 0;
-}
-
-.hidden {
-    display: none;
-}
-
-#message h1 {
-    font-size: 32px;
-    color: #ff4389; /* Red-pink color */
-    margin-bottom: 20px;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    margin: 10px;
-    cursor: pointer;
-    border-radius: 5px;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff4081;
+  color: white;
+  transition: 0.3s;
+  width: 100%;
+  max-width: 300px;
 }
 
-button#yesBtn {
-    background-color: #ff8ccf; /* Soft pink button */
-    color: white;
-    border: none;
+button:hover {
+  background-color: #f50057;
 }
 
-button#yesBtn:hover {
-    background-color: #ff4389; /* Hover effect */
+#noBtn {
+  background-color: #bdbdbd;
 }
 
-#finalMessage h2 {
-    font-size: 36px;
-    color: #ff4389; /* Red-pink color */
-    margin-top: 20px;
-    font-weight: bold;
+#noBtn:hover {
+  background-color: #9e9e9e;
+}
+
+/* Popup for Final Text */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 10;
+}
+
+#finalText {
+  font-size: 80px;
+  color: #ff4081;
+  text-align: center;
+  font-weight: bold;
+  animation: flash 1s infinite alternate; /* Flashing effect */
+}
+
+/* Flashing animation */
+@keyframes flash {
+  0% {
+    color: #ff4081;
+  }
+  50% {
+    color: #f50057;
+  }
+  100% {
+    color: #ff4081;
+  }
+}
+
+/* Bounce Animation for Envelope */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Apply blur effect to background when popup appears */
+.blur {
+  filter: blur(5px); /* Add blur effect */
 }
